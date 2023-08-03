@@ -1,7 +1,7 @@
 console.log("Página en construción con patricio estrella");
 
 function clickPatricio(){
-    alert("La mayonesa es un intrumento?")
+    alert("No, es patricio")
 }
 
 function changeColor( elementHtml, color){

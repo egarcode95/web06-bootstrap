@@ -100,4 +100,29 @@ const misDatosDePerfil = {
     console.log(misDatosDePerfil.fullName); //ƒ (){ return `Nombre completo de Sergh: ${this.name} ${this.lastname}` //return "Nombre completo de Sergh: " + this.name +" "+ this.lastname }
     console.log(misDatosDePerfil.fullNameToUpperCase());
 
-   
+   //-------------------------------------
+   //Conversion explicita de datos (coerción de tipo)
+   const horaDescanso = 13;
+   console.log("Hora descanso " + horaDescanso + "h.")//concatenación
+   const horaDescansoTxt = String(horaDescanso);
+   console.log("Hora descanso: " + horaDescansoTxt +" h.");//concatenación
+   console.log("Hora de retorno: " + horaDescanso + 0.15);
+
+
+const colorVerde = 0x008000;// Representación decimal: 32768
+console.log(`El color RGB del color verde es ${colorVerde}`); //32768
+console.log(`El color RGB del color verde es ${colorVerde.toString() }`);
+console.log(`El color RGB del color verde es ${colorVerde.toString(16) }`);
+console.log(`El color RGB del color verde es #${colorVerde.toString(16).padStart(6,0) }`);
+
+
+//conversion a number
+const myAgeTxt= "25";
+const sumatoria = 10 + myAgeTxt;
+console.log(`Valor de la sumatoria ${sumatoria}`);//1025
+
+console.log(`Valor de la sumatoria usando Number() ${10 + Number(myAgeTxt)}`);//35
+console.log(`Valor de la sumatoria usando parseInt() ${10 + parseInt(myAgeTxt)}`);//35
+console.log(`Valor de la sumatoria usando parseFloat() ${10 + parseFloat(myAgeTxt)}`);//35
+console.log(`Valor de la sumatoria usando operador unario (+) ${10 +(+myAgeTxt)}`);//35
+

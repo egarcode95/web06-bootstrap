@@ -77,3 +77,27 @@ const myObj = {
 console.log(myObj);
 
 //-----------------------------------------------------------------------
+const cancionesCh30 = ["Higway Star", "Trouble", "Saoko", "Rock Dj"]
+
+//tipos de datos object
+const misDatosDePerfil = {
+    name: "Sergio",
+    lastname: "Torres",
+    age: 39,
+    isBelicoso: false,
+    fullName : function(){
+        return `Nombre completo de Sergh: ${this.name} ${this.lastname}`},
+        //return "Nombre completo de Sergh: " + this.name +" "+ this.lastname 
+    fullNameToUpperCase : function(){
+        return "Nombre completo de Sergh en mayuscula : "+ this.name.toUpperCase() +" "+ this.lastname.toUpperCase();
+    }    
+    
+
+}
+    console.log(misDatosDePerfil);
+    console.table(misDatosDePerfil); 
+    console.log(misDatosDePerfil.fullName());
+    console.log(misDatosDePerfil.fullName); //ƒ (){ return `Nombre completo de Sergh: ${this.name} ${this.lastname}` //return "Nombre completo de Sergh: " + this.name +" "+ this.lastname }
+    console.log(misDatosDePerfil.fullNameToUpperCase());
+
+   

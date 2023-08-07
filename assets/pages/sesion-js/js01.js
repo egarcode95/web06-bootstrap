@@ -1,1 +1,79 @@
-console.log(Bienvenido a la sesión JS01);
+console.log("Bienvenido a la sesión JS01");
+
+// 7 Datos primitivos:
+// numbers, string, boolean, null, undefined, bigint, symbol
+
+//Tipos de datos en Js:
+//Primitivos y No-primitivos
+
+//No primitvos:
+//Objetos
+
+//Tipo de dato string
+const stringData = "Holi Crayoli";
+console.log(stringData);
+
+//tipos de dato number
+//numeros positos, negativos, NaN, +Infinity, -Infinity
+console.log( `Tipos de datos number: ${12},${-6},${0.456},${5*"hola"}, ${45/0}, ${-45/0}`)
+
+console.log(`valor máximo: ${Number.MAX_VALUE}`) //valor máximo: 1.7976931348623157e+308
+console.log(`Si el valor es mayor a el MAX_VALUE como valor máximo: 1.79e310 ${1.79e310}`)// Inifinity
+
+console.log(`Valor (entero) máximo  seguro en JavaScript: ${ Number.MAX_SAFE_INTEGER }`) // 9007199254740991
+//Cuando se realizan operaciones que exceden los limites de MAX_SAFE_INTEGER se produce una perdida de presición 
+
+console.log(`MAX _SAFE_INTEGER + 1: ${Number.MAX_SAFE_INTEGER + 1}`)
+console.log(`MAX _SAFE_INTEGER + 1: ${Number.MAX_SAFE_INTEGER + 2}`)
+console.log(`MAX _SAFE_INTEGER + 1: ${Number.MAX_SAFE_INTEGER + 3}`)
+console.log(`MAX _SAFE_INTEGER + 1: ${Number.MAX_SAFE_INTEGER + 4}`)
+
+
+//tipos de datos bigint
+//Sirven para representar valor numericos enteros, de lo que el tipo number no puede representar o no es seguro.
+console.log("Operaciones con BigInt")
+const myBigInt = 9007199254740991n
+console.log(`MAX _SAFE_INTEGER + 1: ${myBigInt + 1n}`)
+console.log(`MAX _SAFE_INTEGER + 1: ${myBigInt + 2n}`)
+console.log(`MAX _SAFE_INTEGER + 1: ${myBigInt + 3n}`)
+console.log(`MAX _SAFE_INTEGER + 1: ${myBigInt + 4n}`)
+
+
+//tipo de dato boolean
+//Se tienen 2 estados: true/false
+
+console.log(`Tipo de dato verdadero: ${true}`);
+console.log(`Tipo de dato falso: ${false}`);
+
+//tipo de dato undefined
+//una variable que es declarada pero el tipo de dato no es definido
+
+let myVar;
+console.log(`tipo de dato undefined: ${myVar}`);    
+
+//tipo de dato null
+//una variable que intensionalmente de borra el tipo de dato
+let myVarNull;
+console.log(`Tipo de datos myVarNull: ${typeof myVarNull} `)//undefined
+myVarNull = "No me gusta YLE";
+console.log(`Tipo de datos myVarNull: ${typeof myVarNull} `)//string
+myVarNull=null;
+console.log(`Tipo de datos myVarNull: ${typeof myVarNull} `)//object **es un error del lenguaje**
+console.log(`myVarNull es null: ${ myVarNull === null}`);
+
+//typo de dato symbol
+//Representa un valor único que se puede utilizar como clave en objetos o identificador unico
+const mySymbol =  Symbol();
+const mySymbol2 =  Symbol();
+const myKey = "codigo";
+console.log(`mySymbol === mySymbol2 ${ mySymbol === mySymbol2}`);
+
+const myObj = {
+    clave : "valor",
+    [mySymbol] :16, // se creará una clave privada, esta no se itera con un ciclo, no se almacena LocalStorage
+    myKey :123,
+    [myKey]:567,
+}
+console.log(myObj);
+
+//-----------------------------------------------------------------------

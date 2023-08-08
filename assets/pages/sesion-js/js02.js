@@ -202,3 +202,47 @@ function cursosEnComun(student1Courses,student2Courses ){
 
 }
 console.log(cursosEnComun(student1Courses, student2Courses));
+
+
+//----------Resolviendo con filter e include--------------//
+
+function getCommonCoursesWithFilter(array1Courses, array2Courses){
+    return student1Courses.filter(course => student2Courses.includes(course));
+        }
+console.log()
+
+//--------------- Resolviendo con filter e include por partes ----------------------
+console.log("###################################");
+function includeCourse( course, index, array ){
+    console.log(`Elemento ${course}, indice ${index}, include ${student2Courses.includes(course)}`);
+    return student2Courses.includes(course); // evaluación // ["Geography", "Spanish", "Programming", "Music"]
+}
+
+function getCoursesWithFilter( array1Courses){
+     const commonCourses = array1Courses.filter( includeCourse ); // ["Math", "English", "Programming", "Biology", "Physics", "Music"];
+     return commonCourses;
+}
+console.log(`Comúnxpartes: ${getCoursesWithFilter( student1Courses, student2Courses )}`);
+
+
+// -------------- Contar la cantidad de caracteres de una frase ---------------------
+/*
+   "peso pluma pica papas con un pico y una pala con un pico pica papas peso pluma";
+
+   Mostrar la cantidad de letras 'p'.
+   Usar funciones flecha.
+    usar split y filter
+*/
+
+const phasePP = "Peso Pluma pica papas con un pico y una pala con un pico pica papas Peso Pluma";
+const counterCharacter = ( phase, character ) => phase.split(character).length-1;
+
+const counterCharacterUnsensitive = ( phase, character ) => phase.toLowerCase().split(character).length-1;
+const contarLetrasP = (frase) => {
+  const letrasP = frase.split('').filter(letra => letra === 'p' || letra === 'P');
+  return letrasP.length;
+};
+console.log(`Cantidad de letras 'p' : ${ counterCharacter(phasePP, "p") } `); // 13
+console.log(`Cantidad de letras 'p' : ${ counterCharacter(phasePP, "p") + counterCharacter(phasePP, "P") } `); // 13
+console.log(`Cantidad de letras 'p' : ${ counterCharacterUnsensitive(phasePP, "p") } `); // 13
+console.log(`Cantidad de letras 'p' (mau) : ${contarLetrasP(phasePP)}`);

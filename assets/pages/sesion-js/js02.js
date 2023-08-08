@@ -141,4 +141,64 @@ const sumatoriaMultiplesNumeros = (a, b, ...rest) => {
     console.log(`Sumatoria de multiples numeros:  ${sumatoriaMultiplesNumeros(2)}`);//7
 
 
-    
+    /*
+    -----------------Funciones callback-------------------
+    Es una funcion(definida, expresada, arrow, anonima) qie se pasa a otra funcion como argumento
+    se pasa el argumento como referencia(sin parentesis).
+
+    */
+   function saludoSquirtle(nombre){
+    return "Vamo' a calmarnos " + nombre;
+   }
+
+    function saludoALosPokemones(){
+        return "yo te elijo";
+    }
+
+    function eligiendoPokebola( saludo, nombre ){
+        console.log("================================");
+        console.log("Hola estás en la liga pokemon");
+        console.log("Elige a tu mejor Pokemon");
+        console.log(saludo(nombre));
+    }
+
+    //eligiendoPokebola();// saludo is not a function
+    eligiendoPokebola(saludoALosPokemones);//
+    eligiendoPokebola(saludoSquirtle,"Lalo");//
+    eligiendoPokebola(function (){ return "Pika pika chuuuu"});//
+    eligiendoPokebola(function (nombre){ return "Wiiiiiii soy "+ nombre } ,"cubone");//
+
+    eligiendoPokebola(saludo =(nombre) =>  "Wiiiiiii soy " + nombre  ,"MewTwo");//
+
+
+    /*
+  Ejercicio 4
+  Crear un programa que itere sobre dos arreglos;
+  si hay cursos en común, imprimirlos en la consola.
+
+student1Courses = ["Math", "English", "Programming", "Biology", "Physics", "Music"];
+student2Courses = ["Geography", "Spanish", "Programming", "Music"];
+
+  salida: "Cursos en común: Programming, Music"
+*/
+const student1Courses = ["Math", "English", "Programming", "Biology", "Physics", "Music"];
+const student2Courses = ["Geography", "Spanish", "Programming", "Music"];
+
+function cursosEnComun(student1Courses,student2Courses ){
+    const commonCourses =[]//guarda los cursos en comun
+
+    for (let i = 0; i < student1Courses.length; i++) {//["Math", "English", "Programming", "Biology", "Physics", "Music"];
+        for (let j = 0; j < student2Courses.length; j++) {// ["Geography", "Spanish", "Programming", "Music"];
+            console.log(` ${student1Courses[i]} === ${student2Courses[j]} : ${student1Courses[i] === student2Courses[j]}`)
+           if (student1Courses[i]===student2Courses[j]) {
+            commonCourses.push(student1Courses[i])
+           } 
+            
+        }
+        
+    }
+    return "cursos en comun: " + commonCourses;
+
+
+}
+console.log(cursosEnComun(student1Courses, student2Courses));

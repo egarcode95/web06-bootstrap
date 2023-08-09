@@ -98,3 +98,51 @@ else {
  }
 
  console.log(mensaje);
+
+ //--------------- Condicional Switch --------------------------
+/*
+ La condicional Switch evalua una expresión y se compara
+ con el valor de cada instancia en 'case' y se ejecuta las
+ sentencias asociadas a ese 'case' hasta encontrar
+ la sentencia 'break' o se finalicen todas las sentencias
+ de la condicional switch.
+
+ Sintaxis:
+  switch (expresión) {
+    case valor1:
+        sentencia;
+        break;
+    case valor 2:
+        sentencias;
+        break;
+    case valor n:
+        sentencias;
+        break
+    default:
+        sentencias;
+        break;
+  }
+  */
+
+  const setVelocidadVentilador = ( velocidad = 0 )=>{
+    let mensaje;
+    // la condicional switch utiliza la comparación estricta ( === )
+    switch (parseInt( velocidad) ) {
+        case 0:
+            mensaje = "apagado";
+            break;
+        case 1:
+            mensaje = "velocidad baja";
+            break;
+        case 2:
+            mensaje = "velocidad media";
+            break;
+        default:
+            mensaje = "el nivel no existe";        
+            break;
+    }
+    return mensaje;
+}
+console.log(`La velocidad del ventilador está en ${setVelocidadVentilador(1)}`)
+console.log(`La velocidad del ventilador está en ${setVelocidadVentilador(8)}`)
+console.log(`La velocidad del ventilador está en ${setVelocidadVentilador("2")}`)

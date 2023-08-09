@@ -242,3 +242,10 @@ let edad = prompt("Ingresa la edad");
 //const confirmacion = edad >= 18 ? "El usuario es mayor de edad" : "El usuario no es mayor de edad";
 //alert(confirmacion);
 alert(edad >= 18 ? "El usuario es mayor de edad" : "El usuario no es mayor de edad");
+
+//......... Cálculo del factorial de un número usando recursividad y operador ternario...............
+
+function factorialConRecursividad( numero ){
+return numero <= 0 ?  1 : numero * factorialConRecursividad(numero -1);
+}
+console.log(factorialConRecursividad(5));

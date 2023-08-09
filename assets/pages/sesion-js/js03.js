@@ -82,10 +82,16 @@ sintaxis:
     else condicion;
 */
 
-const temperatura = 22;
-let mensaje = "Temperatura ideal de: ";
+const temperatura = 24;
+let mensaje = "Temperatura de: ";
 if(temperatura===22){
     mensaje +=`${temperatura} grados centigrados`;
+}
+else if(temperatura >= 15 && temperatura <= 21){
+    mensaje += `${temperatura} grados centigrados es fria`;
+}
+else if(temperatura>=23 && temperatura <= 30){
+    mensaje += `${temperatura} grados centigrados es calurosa`;
 }
 else {
     mensaje = `La ${temperatura} grados centigrados no es idea =(`;

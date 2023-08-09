@@ -246,3 +246,77 @@ console.log(`Cantidad de letras 'p' : ${ counterCharacter(phasePP, "p") } `); //
 console.log(`Cantidad de letras 'p' : ${ counterCharacter(phasePP, "p") + counterCharacter(phasePP, "P") } `); // 13
 console.log(`Cantidad de letras 'p' : ${ counterCharacterUnsensitive(phasePP, "p") } `); // 13
 console.log(`Cantidad de letras 'p' (mau) : ${contarLetrasP(phasePP)}`);
+
+
+
+// -------------- Recursividad ---------------------
+/*
+  Una función recursiva es una función que se llama así misma durante su ejecución.
+
+  Se utilizan en algoritmos y soluciones que se basan en la división y conquista
+  como cálculos matemáticos, recorrido de estructura de datos y algoritmos de búsqueda
+  y ordenamiento.
+
+  Patrón:
+    function nombreFuncionRecursiva( parametro  ){
+        if( condicionParo){
+            return expresión;
+        }
+        else {
+            // llamada recursiva
+            nombreFuncion( nuevoParametro );
+        }
+    }
+*/
+
+//...............Calculo del factorial de un numero usando ciclo for.................
+
+function factorialWithFor(numero){
+    let factorial = 1;
+    for (let i = numero ; i > 0 ; i--){//i=i-1
+        console.log(`factorial: ${factorial} * ${i} = ${factorial*i}`)
+        factorial *=i ; 
+       }
+
+ return factorial;
+       
+    }
+
+
+console.log(`El factorial de 5 es: ${factorialWithFor(5)}`)
+
+//...............Calculo del factorial de un numero usanddo recursividad.................
+function factorialConRecursividad( numero ){
+    if (numero === 1) {
+        return 1;        
+    } else {
+        console.log(`${numero} * ${numero-1}`);
+        return numero*factorialConRecursividad(numero-1);        
+    }
+}
+console.log(`El factorial recursivo de 5 es: ${factorialConRecursividad(5)}`)
+
+
+//-------------Saludar con recursividad-------------------
+/*
+Generar una funcion que muestre en consola un soludo donde se indeique el numerero de saludo deseado.
+
+ej: saludar 10 veces
+
+saludo 1
+saludo 2
+saludo 3
+...
+saludo 10
+*/
+
+function saludar(numeroSaludo){
+    if (numeroSaludo == 10) {
+        return 11;        
+    } else {
+        console.log(`Saludo ${numeroSaludo} `);
+        return (saludar(numeroSaludo- 1));        
+    }
+
+}
+saludar(10);

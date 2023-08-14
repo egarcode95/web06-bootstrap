@@ -1,205 +1,247 @@
-console.log("Sesión JS04 matrices y bucles");
+console.log("Sesión JS05 Condiciones y expresiones");
 
-
-// Declaramos un arreglode 2 dimensiones (matriz).
-// Arrays anidados
-// [ []   , []   , []   ]
-
-const personasEnCh30 = [ 
-    [ "Luis", "Allan" , "Anneth"  , "Maryluz" ] ,  /*indice 0, ByteMe(404) */
-    [ "Ed"  , "Jimena", "Marifer" , "Leo"    , "Alejandro" ] ,  /* indice 1, PerryCode */
-    [ "Lu"  , "Leo"   , "Daniel"  , "Gina"    ]    /* indice 2, BugBusters */
-];
-
-console.log(`Integrantes de BugBusters: ${ personasEnCh30[2] }`); // Lu,Leo,Daniel,Gina
-console.log(`Integrantes de BugBusters: ${ personasEnCh30[2].join(", ") }`); // Lu, Leo, Daniel, Gina
-                                                     // Feliz Cumpleaños
-console.log(`BugBusters integrante n. 1: ${ personasEnCh30[2][0] }`); // Lu
-
-// En la historia Leo tiene exceso de amonestaciones.
-// Hay que reemplazar el nombre de Leo en PerryCode por Bryan.
-
-// personasEnCh30[1][3] = "Brayan";
-personasEnCh30[1].splice(3, 1, "Brayan");
-console.table( personasEnCh30 ); 
-
-
-// ------------- Iterando todos los elementos
-/*
-const personasEnCh30 = [ 
-    [ "Luis", "Allan" , "Anneth"  , "Maryluz" ] ,  indice 0, ByteMe(404) 
-    [ "Ed"  , "Jimena", "Marifer" , "Leo"    , "Alejandro" ] ,   indice 1, PerryCode 
-    [ "Lu"  , "Leo"   , "Daniel"  , "Gina"    ]     indice 2, BugBusters 
-];
-*/ 
-
-console.log( personasEnCh30[0][2]  ); // Anneth
-
-// Este for itera sobre los equipos integradores
-for (let equipo = 0; equipo <  personasEnCh30.length  ; equipo++) {  
-    console.log(`Equipo ${equipo} : ${personasEnCh30[equipo]}` )  ;
-    
-    // Este for itera sobre las personas
-    for( let persona = 0; persona < personasEnCh30[equipo].length ; persona++ ){
-     console.log(`Participante: ${ personasEnCh30[equipo][ persona ] }`);
-    } 
-}
-
-// ----------------------- Uso de for... of ------------------
-/* Ejecuta una sentencia por cada elemento de un objeto iterable(array, colección, string).
-Sintaxis:
-    for (const iterator of object) {
-    
-    }
+// ---------------- Opéradores airtméticos ----------------
+/* adición +
+   multiplicación *
+   substracción -
+   división /
+   resto %
+   exponencial **  - Math.pow(2, 3)   2**3
 */
-console.table( personasEnCh30 ); 
 
-const myPet = "Kraken";
-for (const character of myPet  ){
-    console.log( character );
-}
-myPet.split("").forEach( character => console.log( character ))
+// ---- Precedencia de operadores -------------------------
+// https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Operators/Operator_Precedence
 
+let operaciones = 5 * 2 + 3 ** 2 - 4; // 15
+console.log( operaciones );
+console.log(   4 % 3 + 2 * 3 / 2 - 1  );
 
-for (const equipo of personasEnCh30 ) {
-    console.log( equipo ); // Arreglo de equipos
-    for (const persona of equipo) {
-        console.log( persona ); //  Persona de cada equipo
-    }
-}
-
-// ---------------- forEach -------------------------
+// ------- Operadores de asignación ----------------
 /*
- Método que se utiliza para iterar colecciones, arreglos.
- Permite ejecutar una función por cada elemento del arreglo.
+ Asigna un valor a su operador izquierdo basándose en el valor
+ de su operando derecho:
 
-*/
-console.table( personasEnCh30 ); 
-
-function iterarEquipos( equipo, indice, arreglo ){
-    console.log(`Indice ${indice}: ${equipo} `)
-    equipo.forEach(  iterarPersonas  );
-    return equipo; // arreglo de cada equipo integrador
-}
-
-function iterarPersonas( persona, indice ){
-    console.log(`Indice P ${indice}: ${persona} `)
-    return persona;
-}
-
-
-// personasEnCh30.forEach( iterarEquipos );
-
-personasEnCh30.forEach( (equipo, indexEquipo) => 
-                    equipo.forEach( (persona, indexPer)=> 
-                    console.log(` [${indexEquipo}][${indexPer}] : ${persona}` )));
+ asignación =
  
-// Solo se imprimi el elemento (persona)                    
-//personasEnCh30.forEach( equipo => equipo.forEach( persona=> console.log(`${persona}`)));
+ Operadores abreviados ( compuestos ):
+  op1 += op2  -> op1 = op1 + op2
+  op1 -= op2  -> op1 = op1 - op2
+  op1 *= op2  -> op1 = op1 * op2
 
-// ------------------- Uso de break en ciclos ----------------------------
-// break no detiene la ejecución de la iteración en curso y termina el ciclo.
+*/
+let asignacion = 3;
+console.log(  asignacion += 3 * 3 ** 3 + 10  ); // 94
+console.log( asignacion ); // 94
+console.log(  asignacion += 3 * (3 ** 3) + 10  ); //  += 94 + 91    185
+console.log(  2 ** 3 ** 2  ); //  512
 
-for (let index = 0; index < 10; index++) {
-    if ( index >= 5 ) break;
-    console.log( index ); // 0...4    
-}
+// -------------- Operadores unarios ------------------
+// Solo actuan sobre un operando
+// Negación
+let numero = 3;
+let dinero = - numero; // -3
 
-// Realizar tablas de multiplicar de 1 al 5 con for tradicional
+// Conversión numérica
+let pago = + dinero; // -3 No se le cambia el signo
+let intereses =  "5.23"; // 5.23 numérico
+console.log( typeof(intereses)  ); // number
+intereses = 3;
+console.log( intereses += 5 + + "3"  ); // 11
+
+// Operador lógico not
+let isActive = !true; // false
+
+// Operador de incremento y decremento en unidad.
 /*
-  1 * 1  = 1
-  1 * 2  = 2
-  ...
-  5 * 9  = 45
-  5 * 10 = 50
+  Operador de pre-incremento y pre-decremento
+    ++ valor
+    -- valor
+
+  Operador de post-incremento y post-decremento
+    valor ++
+    valor --
+
 */
 
-for (let i = 1; i <= 5; i++) {
-    for (let j = 1; j <= 10; j++) {
-        console.log(`${i} * ${j} = ${ i * j }`);        
-    }    
-}
+let number =  10;
+++ number; // preincremento
+console.log( number ); //  11
+number ++; // postincremento
+console.log( number ); //  12
 
-console.log("===== Uso de break =========")
-// Realizar la multiplicación hasta el 4
-// 1*1, 1*2, 1*3, 1*4..... 5*3, 5*4
-for (let i = 1; i <= 5; i++) {
-    for (let j = 1; j <= 10; j++) {
-        if ( j === 5 ) break;
-        console.log(`${i} * ${j} = ${ i * j }`);        
-    }    
-}
+number = 20;
+console.log( ++ number ); // 21
+console.log( number ++ ); // 21
+console.log( number ); // 22
 
-console.log("===== Uso de break con tag =======")
-// Realizar la multiplicación hasta el 2 * 4
-// 1*1, 1*2, 1*3, 1*4..... 2*3, 2*4
-rompeCicloSuperior: 
-for (let i = 1; i <= 5; i++) {
-    
-    for (let j = 1; j <= 10; j++) {
-        if ( i===2 && j==5 ) break rompeCicloSuperior;
-        console.log(`${i} * ${j} = ${ i * j }`);        
-    }    
+let index = 0;
+for (       ; index < 5; index++) {
+    console.log(index);    
 }
+console.log("valor index: " +  index ); // 5
 
-// -------------- Uso de continue ---------------------
+let a = 0, b = 0;
+for (  ; a < 3; b = a++) {
+    console.log( a, b);    
+}
+console.log( a, b);    // 3 / 2
+
+let x = 3;                                          // x     y
+let y = ++x;                                        // 4     4   
+console.log(`x : ${ x++ } y:${ ++y }`); // 3, 5     // 4->5  5  
+console.log(`x : ${ x } y:${ y }`); // 4 , 5        // 5     5
+
+
+// ---------------- Operadores lógicos && y || ---------------
 /*
- Termina la ejecución en la iteración actual y continua con la próxima iteración.
- ( o en el tag que se indique).
+ También son conocidos como operadores de corto circuito ( short-circuit operators ).
+
+ &&  : La evaluación se detiene tan pronto como se encuentra un operador falso.
+       Ya no se evalua el segundo operando y se retorna la expresión de OP1.
+ OP1 && OP2 Si OP1 es verdadero, se retorna la expresión de OP2.
+ OP1 || OP2 Si OP1 es verdadero, se retorna la expresión de OP1.
+
 */
-console.log("===== Uso de continue con tag =======")
-// Realizar la multiplicación hasta el  3
-// 1*1, 1*2, 1*3 ..... 2*3... 5*3
-continuaCicloSuperior: 
-for (let i = 1; i <= 5; i++) {    
-    for (let j = 1; j <= 10; j++) {
-        if ( j > 3 ) continue continuaCicloSuperior;
-        console.log(`${i} * ${j} = ${ i * j }`);        
-    }    
-}
 
+const va = true, vb = false , vc = true; // cont va, const vb, const vc
+const n1 = n2 = n3 = true; // const n1, var n2, var n3.
+console.log( va || vb && vc ); // true
+// Conversión a booleano
+// En la conversión de boolean los siguientes valores son false:
+// "", 0, null, undefined, NaN
 
+console.log(  va && "Holi Crayoli" ); // "Holi Crayoli"
+console.log(  vb && "Holi Crayoli" ); // false
+console.log(  NaN && "Holi Crayoli" ); // NaN
+console.log(  "false" && "Holi Crayoli" ); // "Holi Crayoli"
+console.log(  "" && "Activado" ); // ""
+console.log(  "Activado" && "" ); // ""
+console.log(  "Mau" && "Activado" ); // "Activado"
 
+console.log(  "Activado" || "" ); // Activado
+console.log(  "activado" || varSinDeclarar ); // activado
 
+const person = {
+  name : "Leo",
+  lastname : "Ronaldo",
+  age : 25,
+  //occupation : "Full-Stack developer",
+};
 
+console.log(`nombre: ${ person.name }`);
+console.log(`nombre: ${ person["name"] }`);
 
-
-
-
-
-
-
-
-
-
-let counter = 1;
-/* while (confirm("¿Quieres continuar?") ) {
-    console.log(`Veces que has continuado: ${counter}`)
-    counter++;
+/* if ( person.occupation === undefined || person.occupation === "" ){
+  person.occupation = "Software Enginner";
 } */
+// const occupation = person.occupation     ; // Software Enginner 
 
-// ============== Ciclo Do-While ======================
+// const occupation = person.occupation === undefined ? "Software Enginner" : person.occupation; // Software Enginner 
+
+const occupation = person.occupation ||  "Software Enginner"; // Software Enginner 
+// const occupation = person.occupation ??  "Software Enginner"; // operador nullish Coalescing
+
+console.log(`Ocupación: ${ occupation }`); // Software Enginner
+
+// --------------- Comparación Estricta -------------------------
 /*
- Crea un bucle que ejecuta una sentencia mientras la condición especificada
- se cumpla. La evaluación se realiza después de ejecutar la sentencia.
- Por lo tanto, la sentencia se va a ejecutar por lo menos una vez.
-
- Sintaxis:
-
-    do {
-        sentencias;
-    } while( condición );
+ === Estrictamente igual, se debe comparar el valor y el tipo de dato
+ !== Estrictamente diferente, debe ser diferente en valor y tipo
 
 */
 
-let valor = -2;
-while (valor < 5) {
-    console.log(`Valor en While ${valor}`);
-    valor++    
+console.log( "23" === 23 ); // false 
+console.log( "true" === true ); // false
+console.log( "true" == true ); // false NaN == 1
+ console.log( "45" !== 45 ); // true
+
+
+// ------- Operador de desestructuración ( Destructuring ) -------
+/*
+ Es una expresión en JS que hace posible extraer datos de
+ arreglos u objetos y nos ayuda a realizar asignaciones más
+ complejas.
+
+*/
+let dataA = 10;
+let dataB = 20;
+console.log(`a: ${dataA}, b: ${dataB}`); // 10, 20
+// Intercambiar los datos -> A:20 y B :10
+/*let temp = dataA;
+dataA = dataB;
+dataB = temp;*/
+
+[ dataA, dataB  ] = [ dataB, dataA ];
+
+console.log(`a: ${dataA}, b: ${dataB}`); // 10, 20
+
+const car = {
+  model : "Vento",
+  year : 2023,
+  brand : "VW",
+  color: "red",
+  price : 320_000,
+  additionalInfo : {
+    bluetooth : true,
+    cruiseControl : true,
+    gps: false,
+  }
 }
 
-valor = 4;
-do{
-    console.log(`Valor en do-while ${valor}`);
-    valor++;
-}while(valor <5);
+// console.log(`Modelo : ${ car.model }`); // Vento
+// console.log(`Año : ${ car.year}`); // 2023
+// console.log(`Modelo : ${ car.model }, Año : ${ car.year}`); // Vento , 2023
+
+// const carModel = car.model;
+// const carYear = car.year;
+const {  year, model : carModel, additionalInfo :{ bluetooth} } = car;
+
+console.log(`Modelo : ${ carModel }, Año : ${ year}`); // Vento , 2023
+// console.log(`Tiene bluetooth: ${car.additionalInfo.bluetooth ? "sí":"no"}` );
+// console.log(`Tiene bluetooth: ${additionalInfo.bluetooth ? "sí":"no"}` );
+console.log(`Tiene bluetooth: ${ bluetooth ? "sí":"no"}` );
+
+
+// ------------------  ejercicio ------------------------
+/*
+   Hacer una función que realice la división de 2 números
+   y entregue (return) en entero el cociente y residuo.
+
+   Llamar a la función y mostrar en la consola el resultado.
+
+*/
+const num1 = 9;
+const num2 = 4;
+
+function div (num1, num2) {
+    let cociente = parseInt (num1 / num2); // 2.5 -> 2 
+    let residuo = num1 % num2;
+    return {cociente , residuo};   // {cociente: cociente , residuo: residuo }
+
+}
+// console.log(`división: ${div(num1, num2).cociente}, residui: ${div(num1, num2).residuo}`);
+
+function printResults( num1, num2 ) {
+  let {cociente, residuo} = div(num1, num2);
+  console.log(`división: ${cociente}, residuo: ${residuo}`);  
+}
+
+printResults( 23, 3);
+printResults( 4, 2);
+printResults( 100, 45);
+
+//-------------------------------------------------------------------
+
+const LOCAL_FORECAST = {
+  yesterday: { low: 61, high: 75 },
+  today: { low: 64, high: 77 },
+  tomorrow: { low: 68, high: 80 }
+};
+
+// Only change code below this line
+  
+// const lowToday = LOCAL_FORECAST.today.low;
+// const highToday = LOCAL_FORECAST.today.high;
+const { today:{ low : lowToday   , high : highToday}  } = LOCAL_FORECAST;
+console.log( lowToday, highToday);
+// Only change code above this line

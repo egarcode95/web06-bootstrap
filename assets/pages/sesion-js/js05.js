@@ -141,6 +141,7 @@ console.log(`nombre: ${ person["name"] }`);
 const occupation = person.occupation ||  "Software Enginner"; // Software Enginner 
 // const occupation = person.occupation ??  "Software Enginner"; // operador nullish Coalescing
 
+<<<<<<< HEAD
 console.log(`Ocupación: ${ occupation }`); // Software Enginner
 
 // --------------- Comparación Estricta -------------------------
@@ -245,3 +246,6 @@ const LOCAL_FORECAST = {
 const { today:{ low : lowToday   , high : highToday}  } = LOCAL_FORECAST;
 console.log( lowToday, highToday);
 // Only change code above this line
+=======
+console.log(`Ocupación: ${ occupation }`); // Software Enginner
+>>>>>>> 62a7afd1bd8f816c73535b248758fe4fe2c394e1
